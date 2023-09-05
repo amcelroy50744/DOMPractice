@@ -1,8 +1,9 @@
+"use Strict";
 /**
  * SORTING NODES WITHIN A CONTAINER
  * Please, make sure to read the following files in the exercises-info folder before you start
- * * "02 SortingNode.md" 
-*/
+ * * "02 SortingNode.md"
+ */
 
 /**
  * @task
@@ -13,8 +14,6 @@
 
 // Your code goes here...
 
-
-
 /**
  * @task
  * Select all sort buttons by class of "sortBtn" as a NodeList.
@@ -23,8 +22,6 @@
  */
 
 // Your code goes here...
-
-
 
 /**
  * @task
@@ -39,8 +36,6 @@
 
 // Your code goes here...
 
-
-
 /**
  * @task
  * Iterate through the every item in sortBtn NodeList and apply the
@@ -50,5 +45,3 @@
  */
 
 // Your code goes here...
-
-
