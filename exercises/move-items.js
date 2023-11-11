@@ -2,7 +2,7 @@
  * SORTING NODES WITHIN A CONTAINER
  * Please, make sure to read the following files in the exercises-info folder before you start
  * * 01 SelectNodes.md
-*/
+ */
 
 /**
  * @task
@@ -12,8 +12,7 @@
  */
 
 // Your code goes here...
-
-
+const allItems = document.querySelectorAll(".item");
 
 /**
  * @task
@@ -23,9 +22,7 @@
  * */
 
 // Your code goes here
-
-
-
+const main = document.getElementById("main");
 /**
  * @task
  * Select the favorites container by id of "favs"
@@ -34,9 +31,7 @@
  */
 
 // Your code goes here
-
-
-
+const favs = document.getElementById("favs");
 /**
  * @task
  * Create the updateCollections(id, direction) function that follows the list of requirements:
@@ -47,8 +42,22 @@
  */
 
 // Your code goes here
+const updateCollections = (id, direction) => {
+  let icon = document.getElementById(`${id.id}`);
+  let children = icon.children[0];
 
-
+  if (direction === "toFavs") {
+    favs.append(id);
+    children.classList.remove("fa-heart-circle-plus");
+    children.classList.add("fa-heart-crack");
+    direction = "toMain";
+  } else {
+    children.classList.add("fa-heart-circle-plus");
+    children.classList.remove("fa-heart-crack");
+    main.append(id);
+    direction = "toFavs";
+  }
+};
 
 /**
  * @task
@@ -65,5 +74,17 @@
  */
 
 // Your code goes here...
+newArr = Array.from(allItems);
+newArr.forEach((item) => {
+  let icon = document.getElementById(`${item.id}`);
+  let children = icon.children[0];
 
-
+  item.addEventListener("click", function () {
+    if (children.classList.contains("fa-heart-circle-plus")) {
+      direction = "toFavs";
+    } else {
+      direction = "toMain";
+    }
+    updateCollections(item, direction);
+  });
+});

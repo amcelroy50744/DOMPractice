@@ -1,3 +1,4 @@
+"using strict";
 /**
  * LOCAL STORAGE AND DOM MANIPULATION
  * In this task you will write some functions to let the browser save
@@ -38,3 +39,32 @@
  */
 
 // Your code goes here...
+let storageFavs = localStorage.getItem("favorites");
+const callbackFn = (e) => {
+  const item = e.target;
+  itemColor = document.getElementById(`${item.id}`);
+  if (Array.from(item.classList).includes("card")) {
+    if (!storageFavs.includes(`${item.id}`)) {
+      item.style.backgroundColor = "red";
+      storageFavs += `,${item.id}`;
+      localStorage.setItem("favorites", storageFavs);
+      storageFavs = localStorage.getItem("favorites");
+    } else {
+      itemColor.style.backgroundColor = "white";
+      const storageArr = localStorage.getItem("favorites").split(",");
+      storageArr.splice(storageArr.indexOf(`${item.id}`), 1).join(",");
+      localStorage.setItem("favorites", storageArr);
+      storageFavs = localStorage.getItem("favorites");
+    }
+  }
+};
+
+let cardsContainer = document.querySelector(".cardsContainer");
+let myArr = Array.from(storageFavs);
+myArr.forEach((item) => {
+  if (item > 0 && item < 6) {
+    let bg = document.getElementById(`${item}`);
+    bg.style.backgroundColor = "red";
+  }
+});
+cardsContainer.addEventListener("click", callbackFn);

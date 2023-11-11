@@ -13,7 +13,7 @@
  */
 
 // Your code goes here...
-
+const allItems = document.querySelectorAll(".item");
 /**
  * @task
  * Select all sort buttons by class of "sortBtn" as a NodeList.
@@ -22,7 +22,7 @@
  */
 
 // Your code goes here...
-
+const sortBtn = document.querySelectorAll(".sortBtn");
 /**
  * @task
  * Create a sortData function that follows the list of requirements:
@@ -35,7 +35,40 @@
  */
 
 // Your code goes here...
+function sortData(direction) {
+  const container = document.getElementById("main");
+  let arr = Array.from(allItems);
+  if (direction === "asc") {
+    arr.sort((a, b) => (a.id) - (b.id));
+    }
+   else {
+    arr.sort((a, b) => 
+    {
+      if (a.id < b.id) {
+        return 1;
+      } else if (a.id > b.id) return -1;
+      else return 0;
+    }
+  )}
+  arr.forEach((item) => {
+    container.append(item);
+})
+};
+/**
+ * @task
+ * Add event listeners to each button with the class name of "sortBtn".
 
+/**
+ * @task
+}})
+}
+
+/**
+ * @task
+  }
+
+  }
+}
 /**
  * @task
  * Iterate through the every item in sortBtn NodeList and apply the
@@ -45,3 +78,10 @@
  */
 
 // Your code goes here...
+newArr = Array.from(sortBtn);
+newArr.forEach((button) => {
+  let sortdir = button.getAttribute("data-sortdir");
+  button.addEventListener("click", () => {
+    sortData(sortdir);
+  });
+});
