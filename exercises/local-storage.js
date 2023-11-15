@@ -40,6 +40,7 @@
 
 // Your code goes here...
 let storageFavs = localStorage.getItem("favorites");
+storageFavs += "";
 const callbackFn = (e) => {
   const item = e.target;
   itemColor = document.getElementById(`${item.id}`);
